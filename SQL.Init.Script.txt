@@ -1,0 +1,61 @@
+CREATE SCHEMA `healthinsurance` ;
+CREATE TABLE `healthinsurance`.`policy_type` (
+  `policy_type_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `percentage_impact` INT NULL,
+  PRIMARY KEY (`policy_type_id`));
+
+CREATE TABLE `healthinsurance`.`policy` (
+  `policy_id` INT NOT NULL AUTO_INCREMENT,
+  `contact_no` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `policy_type_id` INT NULL,
+  PRIMARY KEY (`policy_id`),
+  INDEX `policy_type_id_idx` (`policy_type_id` ASC),
+  CONSTRAINT `policy_type_id`
+    FOREIGN KEY (`policy_type_id`)
+    REFERENCES `healthinsurance`.`policy_type` (`policy_type_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+CREATE TABLE `healthinsurance`.`client` (
+  `client_id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `age` INT NULL,
+  `policy_id` INT NULL,
+  PRIMARY KEY (`client_id`),
+  INDEX `policy_id_idx` (`policy_id` ASC),
+  CONSTRAINT `policy_id`
+    FOREIGN KEY (`policy_id`)
+    REFERENCES `healthinsurance`.`policy` (`policy_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+CREATE TABLE `healthinsurance`.`term` (
+  `term_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `factor` INT NULL,
+  PRIMARY KEY (`term_id`));
+CREATE TABLE `healthinsurance`.`client_term` (
+  `client_id` INT NOT NULL,
+  `term_id` INT NOT NULL,
+  PRIMARY KEY (`client_id`, `term_id`),
+  INDEX `term_id_idx` (`term_id` ASC),
+  CONSTRAINT `client_id`
+    FOREIGN KEY (`client_id`)
+    REFERENCES `healthinsurance`.`client` (`client_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `term_id`
+    FOREIGN KEY (`term_id`)
+    REFERENCES `healthinsurance`.`term` (`term_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+INSERT INTO `healthinsurance`.`policy_type` (`name`, `percentage_impact`) VALUES ('Gold', '25');
+INSERT INTO `healthinsurance`.`policy_type` (`name`, `percentage_impact`) VALUES ('Silver', '10');
+INSERT INTO `healthinsurance`.`policy_type` (`name`, `percentage_impact`) VALUES ('Bronze', '5');
+
+
+INSERT INTO `healthinsurance`.`term` (`name`, `factor`) VALUES ('Deaf', '100');
+INSERT INTO `healthinsurance`.`term` (`name`, `factor`) VALUES ('Blind', '100');
