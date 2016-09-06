@@ -34,6 +34,6 @@ public class Condition {
 		return id;
 	}
 	public String toString(){
-		return "Name: " + name + "Degree: " + degree;
+		return name;
 	}
 }

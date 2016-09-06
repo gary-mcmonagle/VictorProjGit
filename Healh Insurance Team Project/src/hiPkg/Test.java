@@ -78,44 +78,20 @@ public class Test {
 	}
 	public static void main(String[] args) throws SQLException{
 		
-//		Policy p = DatabaseManager.readPolicy(2);
-//		
-//		Client a = DatabaseManager.readPolicy(2).getClients().get(0);
-//		Client b = DatabaseManager.readPolicy(2).getClients().get(0);
-//		ArrayList<Client> j = p.getClients();
-//		j.remove(0);
-//		p.setClients(j);
-//		//p.setClients(clients);
-//		b.setAge(200);
-//		b.setFname("Frank");
-//		b.setLname("Hoolahan");
-//		Condition c = new Condition(2, "Deaf", 100);
-//		ArrayList<Condition> t = b.getConditions();
-//		t.add(c);
-//		DatabaseManager.updatePolicy(DatabaseManager.readPolicy(2), p);
-//		b.setConditions(new ArrayList<Condition>()); 
-//		
-//		//DatabaseManager.updateClient(b,a);
-//		DatabaseManager.updatePolicy(DatabaseManager.readPolicy(2), p);
-
-//		ArrayList<Condition> cs = new ArrayList<Condition>();
-//		cs.add(new Condition(1, "a", 100));
+//		Condition co = new Condition(1, "", 100);
+//		ArrayList<Condition> a  = new ArrayList<Condition>(); 
+//		a.add(co);
+//		Client cl = new Client("Gary", "McMonagle", 10, a);
 //		ArrayList<Client> cls = new ArrayList<Client>(); 
-//		cls.add(new Client("Gary", "McMonagle", 23, cs));
-//		PolicyType pt = new PolicyType("name", 10, 1)
-//		Policy p = new Policy(cls, "0863007837", "gary.mcmonagle@gmail.com", pt);
+//		cls.add(cl);
+//		PolicyType pt = new PolicyType("Gold", 100, 1);
+//		Policy p = new Policy(cls,"074","email.address",pt);
 //		DatabaseManager.writePolicy(p);
-//		
-//		Policy p = DatabaseManager.readPolicy(4);
-//		p.getClients().get(0).setAge(30);
-//		p.getType().setId(2);
-//		p.setContactNo("0749110168");
-//				System.out.println(DatabaseManager.readPolicy(4).getId());
-////		System.out.println(p.getType().getId());
-//		p.setEmail("gary@hotmail.com");
-//		DatabaseManager.updatePolicy(DatabaseManager.readPolicy(4), p);
-		
-		//DatabaseManager.deletePolicy(4);
+		if(DatabaseManager.isPolicyNumber(1))
+				System.out.println("Yes");
+		else
+			System.out.println("No");
+			
 		
 
 	}

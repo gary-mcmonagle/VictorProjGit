@@ -32,7 +32,7 @@ public class PolicyType {
 		this.id = id;
 	} 
 	public String toString(){
-		return "Policy: " + name;
+		return "Policy Type: " + name;
 	}
 	
 

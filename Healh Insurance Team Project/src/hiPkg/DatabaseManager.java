@@ -240,5 +240,13 @@ public class DatabaseManager {
 		
 		
 	}
+	public static boolean isPolicyNumber(int policyNoIn) throws SQLException{
+		Statement stmt = conn.createStatement();
+		String query = "select count(policy.policy_id) from policy where policy.policy_id = '"+policyNoIn+"';";
+		ResultSet rs = stmt.executeQuery(query);
+		rs.next();
+		return rs.getInt(1) == 1;
+		
+	}
 
 }
